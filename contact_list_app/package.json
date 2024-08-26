@@ -6,12 +6,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build:github": "vite build --mode github",
-    "build:firebase": "vite build --mode firebase",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "gh-pages -d dist",
-    "deploy:firebase": "firebase deploy"
+    "deploy": "firebase deploy"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.7",
