@@ -10,7 +10,8 @@
     "build:firebase": "vite build --mode firebase",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "deploy:firebase": "firebase deploy"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.7",
