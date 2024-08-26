@@ -1,6 +1,7 @@
 import {useState} from "react";
 import {useDispatch} from "react-redux";
 import StateSelector from "./StateSelector.jsx";
+import {addContact} from "../db/contactActions.js";
 
 const ContactForm = () => {
     const dispatch = useDispatch();
@@ -51,7 +52,7 @@ const ContactForm = () => {
         return Object.keys(formErrors).length === 0;
     };
 
-    const addContact = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
 
         if (validateForm()) {
@@ -63,7 +64,8 @@ const ContactForm = () => {
                 category: formData.category,
             };
 
-            dispatch({type: 'ADD_CONTACT', payload: newContact});
+            dispatch(addContact(newContact));
+
 
             setFormData({
                 name: "",
@@ -103,7 +105,7 @@ const ContactForm = () => {
     return (
         <div>
             <h1>Contact List</h1>
-            <form onSubmit={addContact}>
+            <form onSubmit={handleSubmit}>
                 <ul>
                     <label>
                         Name<br/>

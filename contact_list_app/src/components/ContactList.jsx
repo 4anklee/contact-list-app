@@ -1,5 +1,6 @@
-import {useState} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteContact, updateContact } from '../db/contactActions.js';
 
 const ContactList = () => {
     const contacts = useSelector(state => state.contact.contact);
@@ -7,8 +8,8 @@ const ContactList = () => {
     const [editMode, setEditMode] = useState(null);
     const [updatedContact, setUpdatedContact] = useState({});
 
-    const deleteContact = (id) => {
-        dispatch({type: 'DELETE_CONTACT', payload: id});
+    const handleDeleteContact = (id) => {
+        dispatch(deleteContact(id));
     }
 
     const startEditing = (contact) => {
@@ -17,7 +18,7 @@ const ContactList = () => {
     }
 
     const saveContact = () => {
-        dispatch({type: 'UPDATE_CONTACT', payload: updatedContact});
+        dispatch(updateContact(updatedContact));
         setEditMode(null);
     }
 
@@ -110,7 +111,7 @@ const ContactList = () => {
                             ) : (
                                 <button onClick={() => startEditing(contact)}>Update</button>
                             )}
-                            <button onClick={() => deleteContact(contact.id)}>Delete</button>
+                            <button onClick={() => handleDeleteContact(contact.id)}>Delete</button>
                         </td>
                     </tr>
                 ))}

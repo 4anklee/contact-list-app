@@ -1,5 +1,6 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { combineReducers } from "redux";
+import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers } from 'redux';
+import { thunk } from 'redux-thunk';
 
 const initialState = {
     contact: []
@@ -10,7 +11,7 @@ const contactReducer = (state = initialState, action) => {
         case 'ADD_CONTACT':
             return {
                 ...state,
-                contact: [...state.contact, { ...action.payload, id: state.contact.length ? state.contact[state.contact.length - 1].id + 1 : 1 }]
+                contact: [...state.contact, action.payload]
             }
         case 'DELETE_CONTACT':
             return {
@@ -34,7 +35,8 @@ const rootReducer = combineReducers({
 })
 
 const store = configureStore({
-    reducer: rootReducer
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk),
 });
 
 export default store;

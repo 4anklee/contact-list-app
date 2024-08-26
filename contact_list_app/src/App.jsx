@@ -1,8 +1,8 @@
-import './App.css'
+import './css/App.css'
 import ContactForm from "./components/ContactForm.jsx";
 import ContactList from "./components/ContactList.jsx";
 import {Provider} from "react-redux";
-import store from "./store.js";
+import store from "./db/store.js";
 
 
 function App() {
